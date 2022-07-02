@@ -19,6 +19,10 @@
     --pr-br-cl: #EEEEEE;
     --icon-fon: #F5F4FA;
     --color-social-icon-team: #AFB1B8;
+    --bkc-p-we-doing: rgba(47, 48, 58, 0.8);
+
+    /* animation */
+    --animation: 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
     font-family: 'Roboto', sans-serif;
@@ -65,11 +69,9 @@ address {
 }
 .site-top {
     border-bottom: 1px solid var(--border-line-header);
-    /* border-top:1px solid var(--border-line-header); */
-    /* padding-top: 32px;
-    padding-bottom: 32px; */
-   
 }
+
+
 /* логотип */
 .logo {
     color: var(--base-blue-color);
@@ -122,10 +124,11 @@ address {
 .portfolio, 
 .contacts {
     font-weight: 500;
-    /* три элемента исправить */
     color: var(--txt-darkgray-color);
     font-size: 14px;
     line-height: 1.14;
+
+    transform: var(--animation);
     
 }
 .studio:hover, 
@@ -140,6 +143,21 @@ address {
 }
 .current {
     color: var(--base-blue-color);
+}
+.menu-current {
+    position: relative;
+}
+.current::after {
+    position:absolute;
+    bottom: -1px;
+    content:"";
+    width: 100%;
+    height: 4px;
+    display: block;
+
+    background-color: var(--base-blue-color);
+    border-radius: 2px;
+
 }
 
 /* список контакты и email */
@@ -174,18 +192,7 @@ address {
 .email:focus, .tel:focus {
     color:var(--base-blue-color);
 }
-/* .email::before {
-    content:'';
-    display: inline-flex;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    align-items: center;
 
-    background-size:contain;
-    background-image: url(../images/PNG/envelope.png);
-    background-repeat: no-repeat;
-} */
 
 
 /* начало контента странички портфолио */
@@ -251,23 +258,85 @@ address {
     margin-bottom: 4px;
 }
 .progect {
-    /* background-color: var(--hover-txt-btn);
-    /* border: 1px solid var(--pr-br-cl); */
+    position: relative;
+    overflow: hidden;
+
     margin-bottom: 30px;
     margin-left: 30px;
     width: 370px;
 }
+
 .progect-link {
+    
+
     color: currentColor;
     text-decoration: none;
     display: block;
-}
-.progect-link:hover,
-.progect-link:focus {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+
+
 }
 
-/*возможно изменение */
+.progect-link:hover,
+.progect-link:focus
+ {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.container-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    
+
+    transform: translateY(100%);
+    
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+
+    width: 100%;
+    padding: 63px 24px;
+
+    background-color: rgba(33, 150, 243, 0.9);
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.03em;
+    color: var(--hover-txt-btn);
+
+    transition: transform .3s cubic-bezier(.2,0,.2,1);
+}
+
+.progect-link:hover .container-overlay {
+    transform: translateY(0);
+    opacity: 1;
+    transform-origin: bottom center;
+      
+}
+/* .overlay { */
+    /* width: 100%;
+    padding: 63px 24px;
+
+
+    position:absolute;
+    top:0;
+    left: 0;
+
+    background-color: var(--base-blue-color);
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.03em;
+    color: var(--hover-txt-btn);
+
+    opacity: 0;
+}
+.overlay:hover,
+.overlay:focus {
+    opacity: 0.9;
+} */
+
+    
 .progect:nth-last-child(-n + 3) {
     margin-bottom: 0; 
 }
@@ -340,13 +409,13 @@ address {
 .hat {
     background-color: var(--bk-cl-darkgray);
     text-align: center;
+
     padding-top: 200px;
     padding-bottom: 200px;
-
     max-width: 1600px;
-    height: 600px;
     margin-left: auto;
     margin-right: auto;
+
     background-image: linear-gradient( rgba(47, 48, 58, 0.4),  rgba(47, 48, 58, 0.4)), url(../images/background-team.jpg);
     background-size: cover;
     background-position: center;
@@ -424,28 +493,7 @@ address {
     /* width: 270px; */
     height: 120px;
 }
-/* .ideas{
 
-    display: flex;
-    height: 120px;
-    outline: red solid 1px;
-    margin-bottom: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: var(--icon-fon);
-} */
-/* .ideas.antena::before {
-    background-image: url(../images/icons.svg#icon-antenna);
-}
-.ideas.clock::before {
-    background-image: url(../images/PNG/clock\ 1.png);
-}
-.ideas.diagram::before {
-    background-image: url(../images/PNG/diagram\ 1.png);
-}
-.ideas.astronaut::before {
-    background-image: url(../images/PNG/astronaut\ 1.png);
-} */
 .tagline-peculiarities {
     font-size: 14px;
     line-height: 1.14;
@@ -468,6 +516,7 @@ address {
     text-align: center;
     letter-spacing: 0.03em;
     color: var(--tagline-gray-cl);
+
     margin-top: 0;
     margin-bottom: 50px;
 }
@@ -483,6 +532,24 @@ address {
 }
 .we-doing-picture:hover {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.we-doing-picture-description {
+    width: 100%;
+    padding-top: 27px;
+    padding-bottom: 27px;
+
+    position: absolute;
+    bottom: 0;
+   
+ 
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--hover-txt-btn);
+    background-color: var(--bkc-p-we-doing);
+}
+.paragraf {
+    position: relative;
 }
 /* our team */
 .our-team {
@@ -668,4 +735,57 @@ address {
 }
 .social-list .bottom-social-link + .bottom-social-link {
     margin-left: 10px;
+}
+/* модальне вікно */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 528px;
+    height: 581px;
+
+    background-color: var(--hover-txt-btn);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.close-button {
+    position:absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-8px, 8px);
+
+    /* display: flex; */
+    width: 30px;
+    height: 30px;
+
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.icon-close {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+
 }
