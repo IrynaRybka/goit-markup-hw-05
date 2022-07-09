@@ -286,6 +286,7 @@ address {
     
     color: currentColor;
     text-decoration: none;
+    transition:  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 .progect-link:hover,
@@ -315,12 +316,12 @@ address {
     letter-spacing: 0.03em;
     color: var(--hover-txt-btn);
 
-	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .progect-link:hover .overlay,
 .progect-link:focus .overlay {
-    transform:scale(100%);
+    transform:scaleY(100%);
     opacity: 1;
 }
 
@@ -739,18 +740,16 @@ address {
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.icon-social-bottom {
-    fill: currentColor;
-    transition-property: color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
 .bottom-link:hover,
-.bottom-link:focus,
-.icon-social-bottom:hover,
-.icon-social-bottom:focus {
+.bottom-link:focus {
+  
     background-color: var(--base-blue-color);
 }
+.icon-social-bottom {
+    fill: currentColor;
+  
+}
+
 .social-list .bottom-social-link + .bottom-social-link {
     margin-left: 10px;
 }
@@ -760,6 +759,7 @@ address {
     top: 0;
     left: 0;
     opacity: 1;
+    visibility: visible;
    
 
     width: 100%;
@@ -767,7 +767,7 @@ address {
 
     background-color: rgba(0, 0, 0, 0.2);
 
-    transition: opacity 700ms cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
     
 }
